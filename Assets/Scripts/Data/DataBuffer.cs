@@ -9,11 +9,15 @@ namespace aictr.data
 	[Serializable]
 	public class DataBuffer
 	{
-		/// <summary>
-		/// Gets or sets the grades.
-		/// </summary>
-		/// <value>The grades.</value>
-		List<Grade> Grades{ get; set; }
+        // Keep track of the login credentials
+        public String Username { get; set; }
+        public String Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets the grades.
+        /// </summary>
+        /// <value>The grades.</value>
+        List<Grade> Grades{ get; set; }
 
 		public DataBuffer ()
 		{

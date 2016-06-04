@@ -116,10 +116,10 @@ RectTransform:
   - {fileID: 1160889423}
   m_Father: {fileID: 1897307083}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000289917, y: -141}
-  m_SizeDelta: {x: 552, y: 126}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4456614
 MonoBehaviour:
@@ -1312,7 +1312,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550237199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2002645517}
+        m_MethodName: SynchronizeWithServer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &550237199
@@ -1504,10 +1515,10 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 21300000, guid: 772c694cc6fcb0848aaebbb20282cdde, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
+    m_NormalTrigger: 
+    m_HighlightedTrigger: 
+    m_PressedTrigger: 
+    m_DisabledTrigger: 
   m_Interactable: 1
   m_TargetGraphic: {fileID: 595790389}
   m_OnClick:
@@ -2975,7 +2986,7 @@ GameObject:
   - 222: {fileID: 1473833744}
   - 114: {fileID: 1473833743}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2995,8 +3006,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 295.17}
-  m_SizeDelta: {x: 800, y: 689.34}
+  m_AnchoredPosition: {x: 0.000030518, y: 558.57}
+  m_SizeDelta: {x: 800, y: 107.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1473833743
 MonoBehaviour:
@@ -3019,7 +3030,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 115
+    m_FontSize: 73
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3030,11 +3041,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Grading
-
-    Management
-
-    Tool'
+  m_Text: Grade Mgm Tool
 --- !u!222 &1473833744
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3887,6 +3894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a7265c443ebea48b72c105391afda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transmissionController: {fileID: 2092093643}
 --- !u!4 &2002645518
 Transform:
   m_ObjectHideFlags: 0
@@ -3968,3 +3976,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2033520222}
+--- !u!1 &2092093642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2092093644}
+  - 114: {fileID: 2092093643}
+  m_Layer: 0
+  m_Name: TransmissionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2092093643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2092093642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33a00c98768c864ba37a22c03aac81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2092093644
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2092093642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 316.85236, y: 79.9675, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6

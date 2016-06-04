@@ -21,8 +21,8 @@ public class LoginScript : MonoBehaviour {
     public void SaveLogin()
     {
         
-        control.Username = username.text;
-        control.Password = password.text;
+        control.DataBuffer.Username = username.text;
+        control.DataBuffer.Password = password.text;
         RefreshLoginStatus();
 
         // Hide the login form
@@ -47,10 +47,10 @@ public class LoginScript : MonoBehaviour {
     private void RefreshLoginStatus()
     {
         // If available, restore the already preset variables
-        if(!string.IsNullOrEmpty(DataControl.Control.Username))
-        username.text = DataControl.Control.Username;
-        if (!string.IsNullOrEmpty(DataControl.Control.Password))
-            password.text = DataControl.Control.Password;
+        if(!string.IsNullOrEmpty(DataControl.Control.DataBuffer.Username))
+        username.text = DataControl.Control.DataBuffer.Username;
+        if (!string.IsNullOrEmpty(DataControl.Control.DataBuffer.Password))
+            password.text = DataControl.Control.DataBuffer.Password;
 
         // Update the login status
         iconLoggedOut.enabled = ! (iconLoggedIn.enabled = IsLoggedIn());
@@ -64,6 +64,6 @@ public class LoginScript : MonoBehaviour {
     /// <returns></returns>
     public bool IsLoggedIn()
     {
-        return control!=null && !string.IsNullOrEmpty(control.Username) && !string.IsNullOrEmpty(control.Password);
+        return control!=null && !string.IsNullOrEmpty(control.DataBuffer.Username) && !string.IsNullOrEmpty(control.DataBuffer.Password);
     }
 }
