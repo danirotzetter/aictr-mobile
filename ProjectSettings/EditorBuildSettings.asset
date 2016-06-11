@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/homeScene.unity
   - enabled: 1
     path: Assets/Scenes/captureGradeScene.unity
+  - enabled: 1
+    path: Assets/Scenes/studentsScene.unity
