@@ -9,13 +9,9 @@ using System.Xml.Serialization;
 namespace aictr.data
 {
 
-    public class DataControl : MonoBehaviour
+    public class DataControl : Singleton<DataControl>
     {
         #region Properties
-        /// <summary>
-        /// The control keeping the data. Singleton.
-        /// </summary>
-        public static DataControl Control { get; private set; }
         /// <summary>
         /// Gets the data buffer file path.
         /// </summary>
@@ -39,28 +35,12 @@ namespace aictr.data
         // Use this for initialization
         void Awake()
         {
-            if (Control == null)
-            {
-                // Singleton not yet created
-                // Make sure the object remains persisted
-                DontDestroyOnLoad(gameObject);
-
-                Control = this;
 
                 // Load settings
                 Settings = LoadSettings(SettingsFilePath);
 
                 // Load data
                 DataBuffer = LoadDataBuffer(DataBufferFilePath);
-
-
-
-            }
-            else
-            {
-                // Cannot use this control since the singleton is already created
-                Destroy(gameObject);
-            }
         }
 
         #region Data Storage

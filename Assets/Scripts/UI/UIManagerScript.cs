@@ -8,19 +8,23 @@ namespace aictr.UI
     /// <summary>
     /// User interface manager script to deal with navigation and scene loading.
     /// </summary>
-    public class UIManagerScript : MonoBehaviour
+    public class UIManagerScript : Singleton<UIManagerScript>
     {
-        /// <summary>
-        /// Instance singleton
-        /// </summary>
-        public static UIManagerScript Manager { get; private set; }
-
         /// <summary>
         /// Reference to animators
         /// </summary>
         public Animator loginSlider;
         public Animator menuSlider;
 
+        /// <summary>
+        /// References to essential objects
+        /// </summary>
+        [SerializeField]
+        private GameObject header;
+
+        /// <summary>
+        /// Navigation identificators
+        /// </summary>
         public enum Screen { HOME = 0, CAPTURE_GRADE = 1, STUDENTS_LIST = 2 };
 
 
@@ -28,18 +32,8 @@ namespace aictr.UI
         // Use this for initialization
         void Awake()
         {
-            if (Manager == null)
-            {
-                DontDestroyOnLoad(gameObject);
-                Manager = this;
+                // Perform general initialization tasks
                 InitializeUi();
-
-            }
-            else
-            {
-                // Cannot use this control since the singleton is already created
-                Destroy(gameObject);
-            }
         }
 
         /// <summary>
@@ -47,8 +41,13 @@ namespace aictr.UI
         /// </summary>
         private void InitializeUi()
         {
+            // Set default states of UI elements
             loginSlider.SetBool("isHidden", true);
             menuSlider.SetBool("isHidden", true);
+            // Make sure the header is available in all scenes
+            DontDestroyOnLoad(header);
+
+
         }
 
         /// <summary>

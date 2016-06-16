@@ -29,7 +29,7 @@ namespace aictr.UI
             RefreshLoginStatus();
 
             // Hide the login form
-            UIManagerScript.Manager.ToggleLogin();
+            UIManagerScript.Instance.ToggleLogin();
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace aictr.UI
         void Awake()
         {
             // Get the singleton
-            control = DataControl.Control;
+            control = DataControl.Instance;
 
             RefreshLoginStatus();
         }
@@ -50,10 +50,10 @@ namespace aictr.UI
         private void RefreshLoginStatus()
         {
             // If available, restore the already preset variables
-            if (!string.IsNullOrEmpty(DataControl.Control.DataBuffer.Username))
-                username.text = DataControl.Control.DataBuffer.Username;
-            if (!string.IsNullOrEmpty(DataControl.Control.DataBuffer.Password))
-                password.text = DataControl.Control.DataBuffer.Password;
+            if (!string.IsNullOrEmpty(DataControl.Instance.DataBuffer.Username))
+                username.text = DataControl.Instance.DataBuffer.Username;
+            if (!string.IsNullOrEmpty(DataControl.Instance.DataBuffer.Password))
+                password.text = DataControl.Instance.DataBuffer.Password;
 
             // Update the login status
             iconLoggedOut.enabled = !(iconLoggedIn.enabled = IsLoggedIn());
