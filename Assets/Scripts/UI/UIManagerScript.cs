@@ -20,7 +20,15 @@ namespace aictr.UI
         /// References to essential objects
         /// </summary>
         [SerializeField]
-        private GameObject header;
+        private Canvas header;
+        [SerializeField]
+        private Canvas background;
+
+
+        /// <summary>
+        /// Keep track of initialization to prevent duplicates
+        /// </summary>
+        private static bool isInitialized = false;
 
         /// <summary>
         /// Navigation identificators
@@ -32,8 +40,8 @@ namespace aictr.UI
         // Use this for initialization
         void Awake()
         {
-                // Perform general initialization tasks
-                InitializeUi();
+            // Perform general initialization tasks
+            InitializeUi();
         }
 
         /// <summary>
@@ -44,10 +52,13 @@ namespace aictr.UI
             // Set default states of UI elements
             loginSlider.SetBool("isHidden", true);
             menuSlider.SetBool("isHidden", true);
-            // Make sure the header is available in all scenes
-            DontDestroyOnLoad(header);
 
-
+            if (!isInitialized)
+            {
+                DontDestroyOnLoad(header);
+                DontDestroyOnLoad(background);
+                isInitialized = true;
+            }
         }
 
         /// <summary>
@@ -57,6 +68,12 @@ namespace aictr.UI
         private void NavigateTo(Screen screen)
         {
             SceneManager.LoadScene((int)screen);
+
+            // Close menu if open
+            if (!menuSlider.GetBool("isHidden"))
+            {
+                menuSlider.SetBool("isHidden", true);
+            }
         }
         public void NavigateToCapture() { NavigateTo(Screen.CAPTURE_GRADE); }
         public void NavigateToStudentsList() { NavigateTo(Screen.STUDENTS_LIST); }
