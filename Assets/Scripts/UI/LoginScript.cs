@@ -56,18 +56,10 @@ namespace aictr.UI
                 password.text = DataControl.Instance.DataBuffer.Password;
 
             // Update the login status
-            iconLoggedOut.enabled = !(iconLoggedIn.enabled = IsLoggedIn());
+            iconLoggedOut.enabled = !(iconLoggedIn.enabled = control.DataBuffer.IsLoggedIn());
         }
 
 
 
-        /// <summary>
-        /// Checks whether a user has set his credentials
-        /// </summary>
-        /// <returns></returns>
-        public bool IsLoggedIn()
-        {
-            return control != null && !string.IsNullOrEmpty(control.DataBuffer.Username) && !string.IsNullOrEmpty(control.DataBuffer.Password);
-        }
     }
 }

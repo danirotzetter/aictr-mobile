@@ -57,7 +57,14 @@ namespace aictr.UI
             {
                 DontDestroyOnLoad(header);
                 DontDestroyOnLoad(background);
+                DontDestroyOnLoad(gameObject);
                 isInitialized = true;
+            }
+            else
+            {
+                Destroy(header.gameObject);
+                Destroy(background.gameObject);
+                Destroy(gameObject);
             }
         }
 

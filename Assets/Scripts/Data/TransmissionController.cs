@@ -16,6 +16,14 @@ namespace aictr.data
         private static string contentTypeXformJson="application/x-www-form-urlencoded";
         #endregion
 
+        #region Properties
+        /// <summary>
+        /// Whether or not a sync as successfully been executed
+        /// </summary>
+        public bool IsSynchronized { get { return _isSynchronized; } private set { _isSynchronized = value; } }
+        private bool _isSynchronized=false;
+        #endregion
+
         /// <summary>
         /// Synchronize data with the online server
         /// </summary>
@@ -25,6 +33,9 @@ namespace aictr.data
             string url = settings.ServerUrl;
             POST("http://jsonplaceholder.typicode.com/posts", "title: 'foo',body: 'bar',userId: 1", TreatSyncResult);
             GET("http://jsonplaceholder.typicode.com/posts", TreatSyncResult);
+
+            // Update the status
+            IsSynchronized = true;
         }
 
         /// <summary>

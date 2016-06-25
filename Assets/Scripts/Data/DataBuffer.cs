@@ -22,6 +22,19 @@ namespace aictr.data
 		public DataBuffer ()
 		{
 		}
-	}
+
+
+        /// <summary>
+        /// Checks whether a user has set his credentials
+        /// </summary>
+        /// <returns></returns>
+        public bool IsLoggedIn()
+        {
+            return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
+        }
+
+
+
+    }
 }
 
