@@ -30,7 +30,7 @@ namespace aictr.data
         /// <param name="dataBuffer"></param>
         internal void SynchronizeData(Settings settings, DataBuffer dataBuffer)
         {
-            string url = settings.ServerUrl;
+            //string url = settings.ServerUrl;
             POST("http://jsonplaceholder.typicode.com/posts", "title: 'foo',body: 'bar',userId: 1", TreatSyncResult);
             GET("http://jsonplaceholder.typicode.com/posts", TreatSyncResult);
 
