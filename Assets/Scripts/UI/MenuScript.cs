@@ -72,13 +72,14 @@ namespace aictr.UI
         public void NavigateToStudentsList() { NavigateTo(Screen.STUDENTS_LIST); }
         public void NavigateToHome() { NavigateTo(Screen.HOME); }
         public void NavigateToLogin() { NavigateTo(Screen.HOME); LoginScript.Instance.ToggleLogin(true); }
+        public void NavigateToLogout() { UIManagerScript.Instance.QuitApplication(); }
 
 
         /// <summary>
         /// Adjust the menu such that either only the login or all other items are visible
         /// </summary>
         /// <param name="doOnlyShowLoginItem"></param>
-        private void SetLoginMenuItem(bool doOnlyShowLoginItem)
+        public void SetLoginMenuItem(bool doOnlyShowLoginItem)
         {
             home.gameObject.SetActive(!doOnlyShowLoginItem);
             captureGrades.gameObject.SetActive(!doOnlyShowLoginItem);

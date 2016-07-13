@@ -57,9 +57,12 @@ namespace aictr.UI
             if (!string.IsNullOrEmpty(DataControl.Instance.DataBuffer.Password))
                 password.text = DataControl.Instance.DataBuffer.Password;
 
+            bool isLoggedIn = DataControl.Instance.DataBuffer.IsLoggedIn();
             // Update the login status in the header
-            iconLoggedOut.enabled = !(iconLoggedIn.enabled = DataControl.Instance.DataBuffer.IsLoggedIn());
+            iconLoggedIn.enabled = isLoggedIn;
+            iconLoggedOut.enabled = !isLoggedIn;
             // Update the login status in the menu  
+            MenuScript.Instance.SetLoginMenuItem(!isLoggedIn);
         }
                
         public void ToggleLogin() { ToggleLogin(null); }
@@ -70,16 +73,18 @@ namespace aictr.UI
         /// </summary>
         public void ToggleLogin(bool? forceShow)
         {
+            bool newStatus = false;
             if (forceShow != null)
             {
-            loginSlider.SetBool("isHidden", !((bool)forceShow));
+            newStatus= !(bool)forceShow;
             }
             else
             {
                 // Just toggle
             bool isHidden = loginSlider.GetBool("isHidden");
-            loginSlider.SetBool("isHidden", !isHidden);
+                newStatus = !isHidden;
             }
+            loginSlider.SetBool("isHidden", newStatus);
         }
     }
 }

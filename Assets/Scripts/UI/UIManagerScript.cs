@@ -57,6 +57,17 @@ namespace aictr.UI
         }
 
 
+        /// <summary>
+        /// Exit the application, thereby performing cleanup tasks
+        /// </summary>
+        /// <param name="shutDown">Optional parameter to force executing an application quit. If not set or if set to FALSE, then only the cleanup tasks are executed.</param>
+        public void QuitApplication(bool shutDown=false)
+        {
+            if (shutDown)
+            {
+            Application.Quit();
+            }
+        }
         
     }
 }
